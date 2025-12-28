@@ -1,0 +1,25 @@
+from pydantic import BaseModel
+
+class StructuralRequest(BaseModel):
+    building_type: str
+    floors: int
+    span: float
+    location: str
+    material_preference: str
+
+def generate_structure(data):
+    if data.floors <= 2:
+        return "Reinforced Concrete Frame"
+    elif data.floors <= 6:
+        return "RC Frame with Shear Walls"
+    else:
+        return "Hybrid RC-Steel System"
+
+
+def sustainability_score(data):
+    score = 50
+    if data.material_preference.lower() == "hybrid":
+        score += 30
+    if data.floors <= 3:
+        score += 10
+    return min(score, 100)

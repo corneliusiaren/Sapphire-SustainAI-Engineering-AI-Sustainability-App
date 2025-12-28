@@ -1,0 +1,14 @@
+from fastapi import FastAPI
+from schemas.request import StructuralRequest
+from services.calculator import generate_structure, sustainability_score
+
+app = FastAPI(title="Sapphire SustainAI")
+
+@app.post("/generate-structure")
+def generate_structure_api(data: StructuralRequest):
+    structure = generate_structure(data)
+    score = sustainability_score(data)
+    return {
+        "recommended_system": structure,
+        "sustainability_score": score
+    }

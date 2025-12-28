@@ -1,0 +1,22 @@
+sustainai_backend/
+ ├── app/
+ │    ├── main.py
+ │    ├── models/
+ │    │    ├── structural_model.py
+ │    │    ├── sustainability_model.py
+ │    ├── schemas/
+ │    │    ├── request.py
+ │    │    ├── response.py
+ │    ├── services/
+ │    │    ├── calculator.py
+ │    ├── utils/
+ │    │    ├── constants.py
+ ├── requirements.txt
+
+fastapi
+uvicorn
+pydantic
+numpy
+scikit-learn
+pandas
+reportlab

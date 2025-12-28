@@ -1,0 +1,14 @@
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+
+def generate_pdf(data, result):
+    file_name = "sustainability_report.pdf"
+    c = canvas.Canvas(file_name, pagesize=A4)
+
+    c.drawString(50, 800, "Sapphire SustainAI – Engineering Report")
+    c.drawString(50, 760, f"Building Type: {data.building_type}")
+    c.drawString(50, 740, f"Recommended System: {result['recommended_system']}")
+    c.drawString(50, 720, f"Sustainability Score: {result['sustainability_score']}")
+
+    c.save()
+    return file_name

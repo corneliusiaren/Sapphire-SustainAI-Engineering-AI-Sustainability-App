@@ -1,0 +1,18 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+Future<Map<String, dynamic>> generateAIResult() async {
+  final response = await http.post(
+    Uri.parse("http://YOUR_SERVER_IP:8000/generate-structure"),
+    headers: {"Content-Type": "application/json"},
+    body: jsonEncode({
+      "building_type": "Residential",
+      "floors": 3,
+      "span": 6.0,
+      "location": "Abuja",
+      "material_preference": "Hybrid"
+    }),
+  );
+
+  return jsonDecode(response.body);
+}
